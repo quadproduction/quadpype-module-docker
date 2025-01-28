@@ -1,4 +1,4 @@
-FROM debian:bullseye AS builder
+FROM debian:bookworm AS builder
 USER root
 ARG DEBIAN_FRONTEND=noninteractive
 ARG QUADPYPE_PYTHON_VERSION=4.0.20
@@ -27,8 +27,8 @@ WORKDIR /opt/quadpype
 # Install pyenv
 RUN curl https://pyenv.run | bash && \
     echo 'export PYENV_ROOT="$HOME/.pyenv"'>> $HOME/.bashrc && \
-    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.bashrc && \
-    echo 'eval "$(pyenv init -)"' >> $HOME/.bashrc
+    echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.bashrc && \
+    echo 'eval "$(pyenv init - bash)"' >> $HOME/.bashrc &&
 
 SHELL ["/bin/bash", "--login", "-c"]
 
@@ -43,8 +43,6 @@ RUN pyenv local ${QUADPYPE_PYTHON_VERSION}
 # set the container CMD to:
 # '/bin/bash' '-c' 'git stash && git checkout tags/${QUADPYPE_QUAD_SYNCHRO_VERSION} && YOUR_ORIGINAL_CMD_HERE'
 RUN git checkout tags/${QUADPYPE_QUAD_SYNCHRO_VERSION}
-
-RUN pyenv local ${QUADPYPE_PYTHON_VERSION}
 
 # Create virtualenv
 RUN ./src/tools/install_environment.sh
