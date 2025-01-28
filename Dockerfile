@@ -44,6 +44,10 @@ RUN pyenv local ${QUADPYPE_PYTHON_VERSION}
 # '/bin/bash' '-c' 'git stash && git checkout tags/${QUADPYPE_QUAD_SYNCHRO_VERSION} && YOUR_ORIGINAL_CMD_HERE'
 RUN git checkout tags/${QUADPYPE_QUAD_SYNCHRO_VERSION}
 
+# Ensure required scripts are executable
+RUN chmod +x ./src/tools/install_environment.sh
+RUN chmod +x ./src/tools/activate.sh
+
 # Create virtualenv
 RUN ./src/tools/install_environment.sh
 
