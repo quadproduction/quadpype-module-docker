@@ -24,19 +24,9 @@ RUN cd /opt/ && \
 
 WORKDIR /opt/quadpype
 
-# Install pyenv
-RUN curl https://pyenv.run | bash && \
-    echo 'export PYENV_ROOT="$HOME/.pyenv"'>> $HOME/.bashrc && \
-    echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.bashrc && \
-    echo 'eval "$(pyenv init - bash)"' >> $HOME/.bashrc &&
-
 SHELL ["/bin/bash", "--login", "-c"]
 
 RUN source ~/.bashrc
-
-# Install python
-RUN pyenv install ${QUADPYPE_PYTHON_VERSION}
-RUN pyenv local ${QUADPYPE_PYTHON_VERSION}
 
 # The QUADPYPE_QUAD_SYNCHRO_VERSION should be re-apply/updated when the docker container is (re)started
 # First Add a container environnement variable named QUADPYPE_QUAD_SYNCHRO_VERSION set to the version wanted, then
