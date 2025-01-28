@@ -14,7 +14,7 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
     ca-certificates bash git cmake make curl wget build-essential libssl-dev zlib1g-dev libbz2-dev  \
     libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev  \
-    libffi-dev liblzma-dev patchelf libgl1 libxcb-* libxkbcommon* libdbus-1-3
+    libffi-dev liblzma-dev patchelf libgl1 libxcb-* libxkbcommon* libdbus-1-3 libgtk2.0-dev libegl1-mesa
 
 # Clone QuadPype
 RUN cd /opt/ && \
