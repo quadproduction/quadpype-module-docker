@@ -1,8 +1,8 @@
 FROM debian:bookworm AS builder
 USER root
 ARG DEBIAN_FRONTEND=noninteractive
-ARG QUADPYPE_PYTHON_VERSION=4.0.20
-ARG QUADPYPE_QUAD_SYNCHRO_VERSION="4.0.20"
+ARG QUADPYPE_PYTHON_VERSION=4.0.21
+ARG QUADPYPE_QUAD_SYNCHRO_VERSION="4.0.21"
 
 LABEL org.opencontainers.image.name="quadpype-module-docker"
 LABEL org.opencontainers.image.documentation="https://github.com/quadproduction/quadpype-module-docker"
