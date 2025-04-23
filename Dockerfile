@@ -8,12 +8,19 @@ LABEL org.opencontainers.image.documentation="https://github.com/quadproduction/
 
 ENV QUADPYPE_MONGO="mongodb://localhost:27017"
 
-# Update base
+# Update base image and add required packages
+RUN apt-get update -y
+
+RUN apt-get install -y --no-install-recommends ca-certificates
+
+RUN echo "deb [trusted=yes] https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu/ jammy main" >> /etc/apt/sources.list
+
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
-    ca-certificates bash git cmake make curl wget build-essential libssl-dev zlib1g-dev libbz2-dev  \
-    libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev  \
-    libffi-dev liblzma-dev patchelf libgl1 libxcb-* libxkbcommon* libdbus-1-3 libgtk2.0-dev libegl1-mesa
+    bash git cmake make curl wget build-essential libcrypt-dev libssl-dev zlib1g-dev libbz2-dev \
+    iputils-ping libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+    libffi-dev liblzma-dev patchelf libgl1 libxcb-* libxkbcommon* libdbus-1-3 libgtk2.0-dev libegl1-mesa libxau-dev \
+    libpng16-16 libbrotli-dev libfreetype6-dev python3.9 python3.9-dev python3.9-distutils python3.9-venv
 
 # Clone QuadPype
 RUN cd /opt/ && \
