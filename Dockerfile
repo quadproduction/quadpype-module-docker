@@ -25,8 +25,7 @@ RUN apt-get update -y \
 
 RUN ping -V
 
-RUN ping -q -c1 google.com
-
+RUN ping -q -c1 1.1.1.1
 # Clone QuadPype
 RUN cd /opt/ && \
     git clone --recurse-submodules https://github.com/quadproduction/quadpype.git && \
