@@ -25,7 +25,7 @@ RUN apt-get update -y \
 
 RUN ping -V
 
-RUN ping 8.8.8.8
+RUN ping -q -c1 google.com
 
 # Clone QuadPype
 RUN cd /opt/ && \
