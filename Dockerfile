@@ -17,7 +17,7 @@ RUN echo "deb [trusted=yes] https://ppa.launchpadcontent.net/deadsnakes/ppa/ubun
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
-    bash git cmake make curl wget build-essential libcrypt-dev libssl-dev zlib1g-dev libbz2-dev netcat \
+    bash git cmake make curl wget build-essential libcrypt-dev libssl-dev zlib1g-dev libbz2-dev netcat-traditional \
     iputils-ping libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
     libffi-dev liblzma-dev patchelf libgl1 libxcb-* libxkbcommon* libdbus-1-3 libgtk2.0-dev libegl1-mesa libxau-dev \
     libpng16-16 libbrotli-dev libfreetype6-dev python3.9 python3.9-dev python3.9-distutils python3.9-venv
