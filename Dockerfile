@@ -22,6 +22,8 @@ RUN apt-get update -y \
     libffi-dev liblzma-dev patchelf libgl1 libxcb-* libxkbcommon* libdbus-1-3 libgtk2.0-dev libegl1-mesa libxau-dev \
     libpng16-16 libbrotli-dev libfreetype6-dev python3.9 python3.9-dev python3.9-distutils python3.9-venv
 
+RUN nc -zw1 8.8.8.8 443
+
 # Clone QuadPype
 RUN cd /opt/ && \
     git clone --recurse-submodules https://github.com/quadproduction/quadpype.git && \
